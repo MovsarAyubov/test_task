@@ -8,8 +8,13 @@ import 'dishes_builder.dart';
 import 'tegs_builder.dart';
 
 class DishesPageContent extends StatefulWidget {
+  final String categoryName;
   final DishesLoadedState state;
-  const DishesPageContent({Key? key, required this.state}) : super(key: key);
+  const DishesPageContent({
+    Key? key,
+    required this.categoryName,
+    required this.state,
+  }) : super(key: key);
 
   @override
   State<DishesPageContent> createState() => _DishesPageContentState();
@@ -23,7 +28,7 @@ class _DishesPageContentState extends State<DishesPageContent> {
       padding: EdgeInsets.symmetric(horizontal: sizeConfig.screenWidth(16)),
       child: Column(
         children: [
-          const InfoBar(categoryName: "Азиатская кухня"),
+          InfoBar(categoryName: widget.categoryName),
           SizedBox(height: sizeConfig.screenHeight(8)),
           const TegBuilder(),
           SizedBox(height: sizeConfig.screenHeight(16)),

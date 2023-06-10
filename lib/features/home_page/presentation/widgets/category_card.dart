@@ -21,7 +21,7 @@ class CategoryCard extends StatelessWidget {
     final sizeConfig = SizeConfig(context);
     return GestureDetector(
       onTap: () {
-        getIt<AppRouter>().push(const DishesRoute());
+        getIt<AppRouter>().push(DishesRoute(categoryName: categoryItem.name));
       },
       child: Container(
         height: sizeConfig.screenHeight(148),

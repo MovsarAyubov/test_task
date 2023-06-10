@@ -50,7 +50,7 @@ _i1.GetIt $initGetIt(
   );
   gh.singleton<_i3.AppRouter>(_i3.AppRouter());
   gh.lazySingleton<_i4.BasketCubit>(() => _i4.BasketCubit());
-  gh.factory<_i5.MainApi>(() => const _i5.MainApi());
+  gh.factory<_i5.MainApi>(() => _i5.MainApi());
   gh.lazySingleton<_i6.SwitchCubit>(() => _i6.SwitchCubit());
   gh.lazySingleton<_i7.DataSource>(
       () => _i8.DataSourceImpl(mainApi: gh<_i5.MainApi>()));

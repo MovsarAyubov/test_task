@@ -22,9 +22,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     DishesRoute.name: (routeData) {
+      final args = routeData.argsAs<DishesRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DishesPage(),
+        child: DishesPage(
+          key: args.key,
+          categoryName: args.categoryName,
+        ),
       );
     },
     HomeRoute.name: (routeData) {
@@ -76,16 +80,39 @@ class BasketRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [DishesPage]
-class DishesRoute extends PageRouteInfo<void> {
-  const DishesRoute({List<PageRouteInfo>? children})
-      : super(
+class DishesRoute extends PageRouteInfo<DishesRouteArgs> {
+  DishesRoute({
+    Key? key,
+    required String categoryName,
+    List<PageRouteInfo>? children,
+  }) : super(
           DishesRoute.name,
+          args: DishesRouteArgs(
+            key: key,
+            categoryName: categoryName,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'DishesRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<DishesRouteArgs> page = PageInfo<DishesRouteArgs>(name);
+}
+
+class DishesRouteArgs {
+  const DishesRouteArgs({
+    this.key,
+    required this.categoryName,
+  });
+
+  final Key? key;
+
+  final String categoryName;
+
+  @override
+  String toString() {
+    return 'DishesRouteArgs{key: $key, categoryName: $categoryName}';
+  }
 }
 
 /// generated route for

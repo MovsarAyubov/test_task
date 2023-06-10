@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,11 @@ import '../widgets/dishes_page_content.dart';
 
 @RoutePage()
 class DishesPage extends StatefulWidget {
-  const DishesPage({super.key});
+  final String categoryName;
+  const DishesPage({
+    Key? key,
+    required this.categoryName,
+  }) : super(key: key);
 
   @override
   State<DishesPage> createState() => _CategoriesPageState();
@@ -38,7 +43,8 @@ class _CategoriesPageState extends State<DishesPage>
                 if (state is DishesErrorState) {
                   return const MyErrorWidget();
                 } else if (state is DishesLoadedState) {
-                  return DishesPageContent(state: state);
+                  return DishesPageContent(
+                      state: state, categoryName: widget.categoryName);
                 } else {
                   return const LoadingIndicator();
                 }
