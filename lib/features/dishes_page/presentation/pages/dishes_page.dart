@@ -18,7 +18,7 @@ class DishesPage extends StatefulWidget {
 }
 
 class _CategoriesPageState extends State<DishesPage>
-    with AutomaticKeepAliveClientMixin<DishesPage> {
+    with AutomaticKeepAliveClientMixin {
   final dishesCubit = getIt<DishesCubit>();
 
   @override
