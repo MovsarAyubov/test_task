@@ -7,9 +7,9 @@ import 'package:test_task/core/widgets/text_widget.dart';
 import 'package:test_task/features/basket_page/presentation/cubit/basket_cubit.dart';
 import 'package:test_task/features/basket_page/presentation/cubit/basket_state.dart';
 
+import '../../../../core/widgets/size_config.dart';
 import '../../../../setup.dart';
 import '../../../dishes_page/data/models/dish_model.dart';
-import '../../../../core/widgets/size_config.dart';
 
 class OrderCard extends StatefulWidget {
   final DishModel dish;
@@ -25,12 +25,6 @@ class OrderCard extends StatefulWidget {
 }
 
 class _OrderCardState extends State<OrderCard> {
-  String currency() {
-    Locale locale = Localizations.localeOf(context);
-    var format = NumberFormat.simpleCurrency(locale: locale.toString());
-    return format.currencySymbol;
-  }
-
   final basketCubit = getIt<BasketCubit>();
 
   @override
@@ -59,7 +53,7 @@ class _OrderCardState extends State<OrderCard> {
             Row(
               children: [
                 SFProText(
-                  "${widget.dish.price.toString()} ${currency()}",
+                  "${widget.dish.price.toString()} ${NumberFormat.simpleCurrency(locale: "RU").currencySymbol.toString()}",
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                 ),

@@ -5,6 +5,8 @@ import 'package:test_task/core/widgets/size_config.dart';
 import 'package:test_task/core/widgets/text_widget.dart';
 import 'package:test_task/features/dishes_page/domain/entities/dish_entity.dart';
 
+import '../../../../core/models/currency.dart';
+
 class DishInfo extends StatefulWidget {
   final SizeConfig sizeConfig;
   final DishEntity dish;
@@ -19,12 +21,6 @@ class DishInfo extends StatefulWidget {
 }
 
 class _DishInfoState extends State<DishInfo> {
-  String currency() {
-    Locale locale = Localizations.localeOf(context);
-    var format = NumberFormat.simpleCurrency(locale: locale.toString());
-    return format.currencySymbol;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,7 +36,7 @@ class _DishInfoState extends State<DishInfo> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SFProText(
-              "${widget.dish.price.toString()} ${currency()}",
+              "${widget.dish.price.toString()} ${Currency.currency(context)}",
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),

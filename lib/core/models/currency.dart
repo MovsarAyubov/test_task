@@ -3,8 +3,6 @@ import 'package:intl/intl.dart';
 
 class Currency {
   static String currency(BuildContext context) {
-    Locale locale = Localizations.localeOf(context);
-    var format = NumberFormat.simpleCurrency(locale: locale.toString());
-    return format.currencySymbol;
+    return NumberFormat.simpleCurrency(locale: "RU").currencySymbol.toString();
   }
 }
