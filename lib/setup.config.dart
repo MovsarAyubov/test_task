@@ -34,6 +34,8 @@ import 'features/home_page/domain/repositories/home_page_respository.dart'
 import 'features/home_page/domain/usecases/get_categories.dart' as _i16;
 import 'features/home_page/presentation/cubit/categories_cubit.dart' as _i17;
 
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
   _i1.GetIt getIt, {
@@ -46,7 +48,7 @@ _i1.GetIt $initGetIt(
     environmentFilter,
   );
   gh.lazySingleton<_i3.BasketCubit>(() => _i3.BasketCubit());
-  gh.lazySingleton<_i4.MainApi>(() => _i4.MainApi());
+  gh.factory<_i4.MainApi>(() => _i4.MainApi());
   gh.lazySingleton<_i5.SwitchCubit>(() => _i5.SwitchCubit());
   gh.lazySingleton<_i6.DataSource>(
       () => _i7.DataSourceImpl(mainApi: gh<_i4.MainApi>()));

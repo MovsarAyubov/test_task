@@ -1,7 +1,24 @@
-import 'package:http/http.dart' as http;
-import 'package:injectable/injectable.dart';
+// ignore_for_file: file_names
 
-@LazySingleton()
+import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
+import 'package:test_task/core/api/urls.dart';
+
+import 'client.dart';
+
+@Injectable()
 class MainApi {
-  http.Client get client => http.Client();
+  const MainApi();
+
+  RestClient client() {
+    final dio = Dio(
+      BaseOptions(
+        headers: {
+          "Content-Type": "application/json",
+        },
+      ),
+    );
+
+    return RestClient(dio, baseUrl: Urls.baseUrl);
+  }
 }

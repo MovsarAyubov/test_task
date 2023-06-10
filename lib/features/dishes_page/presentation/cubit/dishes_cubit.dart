@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:test_task/features/dishes_page/domain/entities/dish_entity.dart';
 import 'package:test_task/features/dishes_page/domain/usecases/get_dishes.dart';
 
-import '../../data/models/dish_model.dart';
 import 'dishes_state.dart';
 
 @Injectable()
