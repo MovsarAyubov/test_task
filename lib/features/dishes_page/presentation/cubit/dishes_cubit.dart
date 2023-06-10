@@ -14,7 +14,7 @@ class DishesCubit extends Cubit<DishesState> {
   Future<void> getDishes() async {
     final response = await usecase();
     response.fold((error) => emit(DishesErrorState()), (dishes) {
-      emit(DishesLoadedState(dishes: dishes));
+      emit(DishesLoadedState(dishes: dishes.dishes));
     });
   }
 

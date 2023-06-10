@@ -3,6 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_task/core/api/urls.dart';
+import 'log_interceptor.dart' as my;
 
 import 'client.dart';
 
@@ -18,7 +19,7 @@ class MainApi {
         },
       ),
     );
-
+    dio.interceptors.add(my.LogInterceptor());
     return RestClient(dio, baseUrl: Urls.baseUrl);
   }
 }

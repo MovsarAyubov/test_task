@@ -13,6 +13,10 @@ class BasketCubit extends Cubit<BasketState> {
     return state.basket.firstWhere((element) => element.id == id).orderAmount;
   }
 
+  bool isInBasket(int id) {
+    return state.basket.any((element) => element.id == id);
+  }
+
   void addToBasket(DishEntity dish) {
     var newItemInBasket = OrderModel(
         id: dish.id,
@@ -54,5 +58,13 @@ class BasketCubit extends Cubit<BasketState> {
         0) {
       deleteFromBasket(id);
     }
+  }
+
+  int basketCost() {
+    int cost = 0;
+    for (var item in state.basket) {
+      cost = cost + (item.orderAmount * item.price);
+    }
+    return cost;
   }
 }

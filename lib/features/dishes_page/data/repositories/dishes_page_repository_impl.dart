@@ -3,8 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_task/core/errors/failure.dart';
 import 'package:test_task/features/dishes_page/data/datasources/dishes_datasource.dart';
-import 'package:test_task/features/dishes_page/domain/entities/dish_entity.dart';
 import 'package:test_task/features/dishes_page/domain/repositories/dishes_page_repository.dart';
+
+import '../models/dishes_response.dart';
 
 @LazySingleton(as: DishesPageRepository)
 class DishesPageRepositoryImpl implements DishesPageRepository {
@@ -13,7 +14,7 @@ class DishesPageRepositoryImpl implements DishesPageRepository {
     required this.source,
   });
   @override
-  Future<Either<Failure, List<DishEntity>>> getData() async {
+  Future<Either<Failure, DishesResponse>> getData() async {
     try {
       final dishes = await source.getDishes();
       return Right(dishes);

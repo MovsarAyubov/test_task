@@ -1,15 +1,16 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/error_widget.dart';
 import '../../../../core/widgets/loading_indicator.dart';
-import '../../../../core/widgets/my_bottom_navigation_bar.dart';
 import '../../../../core/widgets/size_config.dart';
 import '../../../../setup.dart';
 import '../cubit/categories_cubit.dart';
 import '../cubit/categories_state.dart';
 import '../widgets/home.dart';
 
+@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -31,7 +32,6 @@ class _HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
     super.build(context);
     final sizeConfig = SizeConfig(context);
     return Scaffold(
-      bottomNavigationBar: const MyBottomNavigationBar(),
       body: SafeArea(
         minimum: EdgeInsets.symmetric(
           horizontal: sizeConfig.screenWidth(16),

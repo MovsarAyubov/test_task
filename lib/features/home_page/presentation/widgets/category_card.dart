@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:test_task/core/widgets/size_config.dart';
 import 'package:test_task/core/widgets/text_widget.dart';
+import 'package:test_task/router/app_router.dart';
 
-import '../../../dishes_page/presentation/pages/dishes_page.dart';
+import '../../../../setup.dart';
 import '../../domain/entities/category_entity.dart';
 
 class CategoryCard extends StatelessWidget {
@@ -20,8 +21,7 @@ class CategoryCard extends StatelessWidget {
     final sizeConfig = SizeConfig(context);
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const DishesPage()));
+        getIt<AppRouter>().push(const DishesRoute());
       },
       child: Container(
         height: sizeConfig.screenHeight(148),

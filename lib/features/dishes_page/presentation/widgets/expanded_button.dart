@@ -7,11 +7,13 @@ import 'package:test_task/core/widgets/text_widget.dart';
 import '../../../../core/widgets/size_config.dart';
 
 class ExpandedButton extends StatelessWidget {
+  final double colorOpacity;
   final String buttonText;
   final VoidCallback onTap;
   final SizeConfig sizeConfig;
   const ExpandedButton({
     Key? key,
+    this.colorOpacity = 1,
     required this.buttonText,
     required this.onTap,
     required this.sizeConfig,
@@ -28,7 +30,7 @@ class ExpandedButton extends StatelessWidget {
               width: double.infinity,
               height: sizeConfig.screenHeight(48),
               decoration: BoxDecoration(
-                color: blue,
+                color: blue.withOpacity(colorOpacity),
                 borderRadius: BorderRadius.circular(10),
               ),
               alignment: Alignment.center,

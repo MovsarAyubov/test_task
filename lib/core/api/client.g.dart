@@ -21,13 +21,13 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<List<CategoryModel>> getCategories() async {
+  Future<CategoriesResponse> getCategories() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<CategoryModel>>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<CategoriesResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -39,20 +39,18 @@ class _RestClient implements RestClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => CategoryModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = CategoriesResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<List<DishModel>> getDishes() async {
+  Future<DishesResponse> getDishes() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<DishModel>>(Options(
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DishesResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -64,9 +62,7 @@ class _RestClient implements RestClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => DishModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = DishesResponse.fromJson(_result.data!);
     return value;
   }
 

@@ -1,7 +1,7 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/empty_basket.dart';
-import '../../../../core/widgets/my_bottom_navigation_bar.dart';
 import '../../../../core/widgets/size_config.dart';
 
 import '../../../../setup.dart';
@@ -9,6 +9,7 @@ import '../cubit/basket_cubit.dart';
 import '../cubit/basket_state.dart';
 import '../widgets/basket_list.dart';
 
+@RoutePage()
 class BasketPage extends StatefulWidget {
   const BasketPage({super.key});
 
@@ -23,7 +24,6 @@ class _BasketPageState extends State<BasketPage> {
   Widget build(BuildContext context) {
     final sizeConfig = SizeConfig(context);
     return Scaffold(
-      bottomNavigationBar: const MyBottomNavigationBar(),
       body: SafeArea(
         child: BlocBuilder<BasketCubit, BasketState>(
           bloc: basketCubit,

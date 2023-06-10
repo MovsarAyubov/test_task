@@ -1,26 +1,26 @@
+import 'package:json_annotation/json_annotation.dart';
+
 import '../../domain/entities/dish_entity.dart';
 
+part 'dish_model.g.dart';
+
+@JsonSerializable()
 class DishModel extends DishEntity {
+  @override
+  @JsonKey(name: "image_url")
+  final String imageUrl;
   DishModel({
     required super.id,
     required super.name,
     required super.price,
     required super.weight,
     required super.description,
-    required super.imageUrl,
+    required this.imageUrl,
     required super.tegs,
-  });
+  }) : super(imageUrl: imageUrl);
 
-  factory DishModel.fromJson(Map<String, dynamic> json) {
-    return DishModel(
-      id: json['id'],
-      name: json['name'],
-      price: json['price'],
-      weight: json['weight'],
-      description: json['description'],
-      imageUrl: json['image_url'],
-      tegs:
-          (json['tegs'] as List<dynamic>).map((teg) => teg.toString()).toList(),
-    );
-  }
+  factory DishModel.fromJson(Map<String, dynamic> json) =>
+      _$DishModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DishModelToJson(this);
 }

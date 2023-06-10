@@ -26,6 +26,7 @@ class _DishAlertState extends State<DishAlert> {
 
   @override
   Widget build(BuildContext context) {
+    final isInBasket = basketCubit.isInBasket(widget.dish.id);
     final sizeConfig = SizeConfig(context);
     return AlertDialog(
       backgroundColor: Colors.white,
@@ -51,11 +52,14 @@ class _DishAlertState extends State<DishAlert> {
           ),
           SizedBox(height: sizeConfig.screenHeight(16)),
           ExpandedButton(
+            colorOpacity: isInBasket ? 0.5 : 1,
             sizeConfig: sizeConfig,
-            buttonText: "Добавить в корзину",
+            buttonText: isInBasket ? "В корзине" : "Добавить в корзину",
             onTap: () {
-              basketCubit.addToBasket(widget.dish);
-              Navigator.pop(context);
+              if (!isInBasket) {
+                basketCubit.addToBasket(widget.dish);
+                Navigator.pop(context);
+              }
             },
           ),
         ],

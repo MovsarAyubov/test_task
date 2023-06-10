@@ -3,6 +3,7 @@ import '../../features/dishes_page/data/models/dish_model.dart';
 
 class OrderModel extends DishModel {
   final int orderAmount;
+
   OrderModel(
       {this.orderAmount = 1,
       required super.id,

@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
-import '../entities/dish_entity.dart';
+import '../../data/models/dishes_response.dart';
 
 abstract class DishesPageRepository {
-  Future<Either<Failure, List<DishEntity>>> getData();
+  Future<Either<Failure, DishesResponse>> getData();
 }

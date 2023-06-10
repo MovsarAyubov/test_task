@@ -16,8 +16,8 @@ class HomePageRepositoryImpl implements HomePageRepository {
   @override
   Future<Either<Failure, List<CategoryEntity>>> getData() async {
     try {
-      final categories = await source.getCategories();
-      return Right(categories);
+      final response = await source.getCategories();
+      return Right(response.categories);
     } catch (e) {
       return Left(ServerFailure());
     }

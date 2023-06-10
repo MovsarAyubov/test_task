@@ -1,5 +1,5 @@
-import '../models/dish_model.dart';
+import '../models/dishes_response.dart';
 
 abstract class DishesDataSource {
-  Future<List<DishModel>> getDishes();
+  Future<DishesResponse> getDishes();
 }

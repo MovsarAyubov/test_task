@@ -1,14 +1,15 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/error_widget.dart';
 import '../../../../core/widgets/loading_indicator.dart';
-import '../../../../core/widgets/my_bottom_navigation_bar.dart';
 import '../../../../setup.dart';
 import '../cubit/dishes_cubit.dart';
 import '../cubit/dishes_state.dart';
 import '../widgets/dishes_page_content.dart';
 
+@RoutePage()
 class DishesPage extends StatefulWidget {
   const DishesPage({super.key});
 
@@ -30,7 +31,6 @@ class _CategoriesPageState extends State<DishesPage>
   Widget build(BuildContext context) {
     super.build(context);
     return Scaffold(
-      bottomNavigationBar: const MyBottomNavigationBar(),
       body: SafeArea(
           child: BlocBuilder<DishesCubit, DishesState>(
               bloc: dishesCubit,
