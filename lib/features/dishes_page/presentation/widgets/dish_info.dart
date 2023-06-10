@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:test_task/core/widgets/size_config.dart';
 import 'package:test_task/core/widgets/text_widget.dart';
 import 'package:test_task/features/dishes_page/domain/entities/dish_entity.dart';
